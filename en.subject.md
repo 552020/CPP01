@@ -116,10 +116,11 @@ Implement your own tests to ensure your zombieHorde() function works as expected
 Try to call announce() for each one of the zombies.
 Don’t forget to delete all the zombies and check for memory leaks.
 
-Chapter V
+### Chapter V
+
 Exercise 02: HI THIS IS BRAIN
 Exercise : 02
-HI THIS IS BRAIN
+**HI THIS IS BRAIN**
 Turn-in directory : ex02/
 Files to turn in : Makefile, main.cpp
 Forbidden functions : None
@@ -136,11 +137,8 @@ And then:
 • The value of the string variable.
 • The value pointed to by stringPTR.
 • The value pointed to by stringREF.
-That’s all, no tricks. The goal of this exercise is to demystify references which can
-seem completely new. Although there are some little differences, this is another syntax
-for something you already do: address manipulation.
 
-7
+That’s all, no tricks. The goal of this exercise is to demystify references which can seem completely new. Although there are some little differences, this is another syntax for something you already do: address manipulation.
 
 Chapter VI
 Exercise 03: Unnecessary violence

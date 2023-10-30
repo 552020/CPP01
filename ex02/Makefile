@@ -3,10 +3,10 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Target executable name
-TARGET = zombie_horde 
+TARGET = main 
 
 # Source and Object Files
-SRCS = main.cpp Zombie.cpp newZombie.cpp 
+SRCS = main.cpp  
 
 # Create an obj directory if it doesn't exist
 OBJDIR = obj
