@@ -42,6 +42,12 @@ std::string replaceOccurences(std::string file_content,
   return (file_content);
 }
 
+// TODO: think about edge cases
+// - s1 and s2 can't be NULL
+// - s1 and s2 can be empty strings
+// - s1 and s2 can be the same string
+
+
 int main(int argc, char **argv) {
 
   std::ifstream infile;

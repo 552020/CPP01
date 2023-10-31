@@ -155,17 +155,16 @@ Implement a Weapon class that has:
 • A getType() member function that returns a const reference to type.
 • A setType() member function that sets type using the new one passed as parameter.
 
-Now, create two classes: HumanA and HumanB. They both have a Weapon and a name. They also have a member function attack() that displays (of course, without the
-angle brackets):
+Now, create two classes: HumanA and HumanB. They both have a Weapon and a name. They also have a member function attack() that displays (of course, without the angle brackets):
 
 <name> attacks with their <weapon type>
 
 HumanA and HumanB are almost the same except for these two tiny details:
 • While HumanA takes the Weapon in its constructor, HumanB doesn’t.
 • HumanB may not always have a Weapon, whereas HumanA will always be armed.
-If your implementation is correct, executing the following code will print an attack
-with "crude spiked club" then a second attack with "some other type of club" for both
-test cases:
+If your implementation is correct, executing the following code will print an attack with "crude spiked club" then a second attack with "some other type of club" for both test cases:
+
+```c
 int main()
 {
 {
@@ -194,75 +193,50 @@ club.setType("some other type of club");
 jim.attack();
 
 return 0;
+```
 
-Don’t forget to check for memory leaks.
-In which case do you think it would be best to use a pointer to
-Weapon? And a reference to Weapon? Why? Think about it before
-starting this exercise.
+Don’t forget to check for memory leaks. In which case do you think it would be best to use a pointer to
+Weapon? And a reference to Weapon? Why? Think about it before starting this exercise.
 
-9
+### Chapter VII
 
-Chapter VII
 Exercise 04: Sed is for losers
 Exercise : 04
-Sed is for losers
+**Sed is for losers**
 Turn-in directory : ex04/
 Files to turn in : Makefile, main.cpp, _.cpp, _.{h, hpp}
 Forbidden functions : std::string::replace
 
-Create a program that takes three parameters in the following order: a filename and
-two strings, s1 and s2.
-It will open the file <filename> and copies its content into a new file
-<filename>.replace, replacing every occurrence of s1 with s2.
-Using C file manipulation functions is forbidden and will be considered cheating. All
-the member functions of the class std::string are allowed, except replace. Use them
-wisely!
-Of course, handle unexpected inputs and errors. You have to create and turn in your
-own tests to ensure your program works as expected.
+Create a program that takes three parameters in the following order: a filename and two strings, s1 and s2. It will open the file <filename> and copies its content into a new file <filename>.replace, replacing every occurrence of s1 with s2. Using C file manipulation functions is forbidden and will be considered cheating. All the member functions of the class std::string are allowed, except replace. Use them wisely!
+Of course, handle unexpected inputs and errors. You have to create and turn in your own tests to ensure your program works as expected.
 
-10
+## Chapter VIII
 
-Chapter VIII
 Exercise 05: Harl 2.0
 Exercise : 05
-Harl 2.0
+**Harl 2.0**
 Turn-in directory : ex05/
 Files to turn in : Makefile, main.cpp, Harl.{h, hpp}, Harl.cpp
 Forbidden functions : None
 
 Do you know Harl? We all do, do we? In case you don’t, find below the kind of
 comments Harl makes. They are classified by levels:
-• "DEBUG" level: Debug messages contain contextual information. They are mostly
-used for problem diagnosis.
+• "DEBUG" level: Debug messages contain contextual information. They are mostly used for problem diagnosis.
 Example: "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!"
-• "INFO" level: These messages contain extensive information. They are helpful for
-tracing program execution in a production environment.
-Example: "I cannot believe adding extra bacon costs more money. You didn’t put
-enough bacon in my burger! If you did, I wouldn’t be asking for more!"
-• "WARNING" level: Warning messages indicate a potential issue in the system.
-However, it can be handled or ignored.
-Example: "I think I deserve to have some extra bacon for free. I’ve been coming for
-years whereas you started working here since last month."
-• "ERROR" level: These messages indicate an unrecoverable error has occurred.
-This is usually a critical issue that requires manual intervention.
+• "INFO" level: These messages contain extensive information. They are helpful for tracing program execution in a production environment.
+Example: "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
+• "WARNING" level: Warning messages indicate a potential issue in the system. However, it can be handled or ignored.
+Example: "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month."
+• "ERROR" level: These messages indicate an unrecoverable error has occurred. This is usually a critical issue that requires manual intervention.
 Example: "This is unacceptable! I want to speak to the manager now."
 
-11
-
-Memory allocation, pointers to members,
-references, switch statement
-
-C++ - Module 01
-
-You are going to automate Harl. It won’t be difficult since it always says the same
-things. You have to create a Harl class with the following private member functions:
+You are going to automate Harl. It won’t be difficult since it always says the same things. You have to create a Harl class with the following private member functions:
 • void debug( void );
 • void info( void );
 • void warning( void );
 • void error( void );
 
-Harl also has a public member function that calls the four member functions above
-depending on the level passed as parameter:
+Harl also has a public member function that calls the four member functions above depending on the level passed as parameter:
 void
 
 complain( std::string level );
