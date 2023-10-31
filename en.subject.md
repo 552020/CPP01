@@ -74,7 +74,7 @@ theoretical concepts.
 
 Exercise 00: BraiiiiiiinnnzzzZ
 
-BraiiiiiiinnnzzzZ
+**BraiiiiiiinnnzzzZ**
 Turn-in directory : ex00/
 Files to turn in : Makefile, main.cpp, Zombie.{h, hpp}, Zombie.cpp,
 newZombie.cpp, randomChump.cpp
@@ -213,7 +213,7 @@ Of course, handle unexpected inputs and errors. You have to create and turn in y
 ## Chapter VIII
 
 Exercise 05: Harl 2.0
-Exercise : 05
+**Exercise : 05**
 **Harl 2.0**
 Turn-in directory : ex05/
 Files to turn in : Makefile, main.cpp, Harl.{h, hpp}, Harl.cpp
@@ -241,26 +241,23 @@ void
 
 complain( std::string level );
 
-The goal of this exercise is to use pointers to member functions. This is not a
-suggestion. Harl has to complain without using a forest of if/else if/else. It doesn’t think
+The goal of this exercise is to use pointers to member functions. This is not a suggestion. Harl has to complain without using a forest of if/else if/else. It doesn’t think
 twice!
-Create and turn in tests to show that Harl complains a lot. You can use the examples
-of comments listed above in the subject or choose to use comments of your own.
+Create and turn in tests to show that Harl complains a lot. You can use the examples of comments listed above in the subject or choose to use comments of your own.
 
-12
+### Chapter IX
 
-Chapter IX
 Exercise 06: Harl filter
-Exercise : 06
-Harl filter
+**Exercise : 06**
+**Harl filter**
 Turn-in directory : ex06/
 Files to turn in : Makefile, main.cpp, Harl.{h, hpp}, Harl.cpp
 Forbidden functions : None
 
-Sometimes you don’t want to pay attention to everything Harl says. Implement a
-system to filter what Harl says depending on the log levels you want to listen to.
-Create a program that takes as parameter one of the four levels. It will display all
-messages from this level and above. For example:
+Sometimes you don’t want to pay attention to everything Harl says. Implement a system to filter what Harl says depending on the log levels you want to listen to.
+Create a program that takes as parameter one of the four levels. It will display all messages from this level and above. For example:
+
+```bash
 $> ./harlFilter "WARNING"
 [ WARNING ]
 I think I deserve to have some extra bacon for free.
@@ -269,24 +266,17 @@ I've been coming for years whereas you started working here since last month.
 This is unacceptable, I want to speak to the manager now.
 $> ./harlFilter "I am not sure how tired I am today..."
 [ Probably complaining about insignificant problems ]
+```
 
-Although there are several ways to deal with Harl, one of the most effective is to
-SWITCH it off.
+Although there are several ways to deal with Harl, one of the most effective is to SWITCH it off.
 Give the name harlFilter to your executable.
 You must use, and maybe discover, the switch statement in this exercise.
 
 You can pass this module without doing exercise 06.
 
-13
+### Chapter X
 
-Chapter X
 Submission and peer-evaluation
 Turn in your assignment in your Git repository as usual. Only the work inside your
 repository will be evaluated during the defense. Don’t hesitate to double check the
 names of your folders and files to ensure they are correct.
-
-????????????
-
-XXXXXXXXXX = $3$$4f1b9de5b5e60c03dcb4e8c7c7e4072c
-
-14
