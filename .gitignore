@@ -1,1 +1,21 @@
-private/
+# Ignore everything
+*
+# But not these files...
+!*.c
+!*.cpp
+!*.h
+!*.hpp
+!*.md
+!*.txt
+!*.sh
+!*.py
+!*.json
+!Makefile
+!CMakeLists.txt
+!.gitignore
+!.clang-format
+# Do not ignore directories
+!*/
+!.vscode/
+# Specifically ignore the internal directory
+secretus/
