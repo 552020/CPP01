@@ -14,5 +14,7 @@
 !.gitignore
 !.clang-format
 !.vscode/
+!docs/
 secretus/
+a.out
 *.o
