@@ -30,6 +30,7 @@ void Harl::complain(std::string level)
 {
 	int nbrOfComplainFunctions = 4;
 	typedef void (Harl::*ptrToMemberFunction)(void);
+	// void (Harl::*complainFunctions[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	ptrToMemberFunction complainFunctions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string complainLevels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	for (int i = 0; i < nbrOfComplainFunctions; i++)
@@ -39,24 +40,5 @@ void Harl::complain(std::string level)
 			(this->*complainFunctions[i])();
 			break;
 		}
-	}
-}
-void Harl::complain_if_else(std::string level)
-{
-	if (level == "DEBUG")
-	{
-		debug();
-	}
-	else if (level == "INFO")
-	{
-		info();
-	}
-	else if (level == "WARNING")
-	{
-		warning();
-	}
-	else if (level == "ERROR")
-	{
-		error();
 	}
 }
