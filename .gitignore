@@ -15,4 +15,4 @@
 !.clang-format
 !.vscode/
 secretus/
-*.c 
+*.o
