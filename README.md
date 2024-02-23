@@ -8,6 +8,51 @@
 
 ## 03 - Unnecessary violence
 
+### Weapon as reference in the initialisation list
+
+Interesting conversation with the model: https://chat.openai.com/share/28d10123-e5fc-402a-bef9-e8ddc801cff1 about why we need to initialize the Weapon in the constructor of HumanA as reference and not as pointer and in the initialisation list. TBH both could be pointers. If we decide to go for the reference in the case of HumanA, which has always a Weapon, then we need to initialise it in the initialisation list.
+
+```cpp
+#include "HumanA.hpp"
+#include "Weapon.hpp"
+#include <iostream>
+
+// Note 1 about initialisation list:
+HumanA::HumanA(std::string name, Weapon &weapon) : _weapon(weapon) { this->_name = name; }
+
+HumanA::~HumanA() {}
+
+void HumanA::attack() { std::cout << this->_name << " attacks with his " << _weapon.getType() << std::endl; }
+```
+
+**Why we need an initialisation list here**
+A reference is not a standalone object like a pointer or a regular variable. It's just an alias for another object. So when you create a reference, you must immediately make it refer to something. This is unlike a regular variable or a pointer, where you can declare it and assign it a value later.
+
+In the case of HumanA, the reference weapon must be bound to an existing Weapon object as soon as the HumanA object is created. The only way to do this in a constructor is by using an initialization list. If you try to assign a reference in the constructor body (the normal way), you'll get a compilation error because it's already too late; the reference needs to be bound to something during its creation, which happens before the constructor body is executed.
+
+So, in short, when dealing with references as class members, you're compelled to use initialization lists to initialize them. It's not just a stylistic choice or a matter of efficiency (as it often is with regular variables); it's a fundamental requirement of how references work in C++.
+
+### Human C and the club as pointer
+
+`Weapon *clubPTR = &Weapon("crude spiked club");` this would throw an error
+
+```cpp
+// third block scope
+	{
+		Weapon *clubPTR = new Weapon("crude spiked club");
+		// Weapon *clubPTR = &Weapon("crude spiked club");
+		HumanC jim("Mike");
+		jim.attack();
+		jim.setWeapon(clubPTR);
+		jim.attack();
+		clubPTR->setType("some other type of club");
+		jim.attack();
+		delete clubPTR;
+	}
+```
+
+Temporary objects in C++ are destroyed at the end of the full expression in which they are created. This means that the temporary Weapon object would be destroyed at the end of the statement, not at the end of the block scope. Therefore, by the time the execution reaches the next line, the Weapon object to which clubPTR points would already have been destroyed, leaving clubPTR dangling and leading to undefined behavior if dereferenced.
+
 ## 04 - Sed is for losers
 
 - _File manipulatio_

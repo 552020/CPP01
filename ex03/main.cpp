@@ -6,11 +6,6 @@
 int main()
 {
 
-	// TODO: read this:
-	// https://chat.openai.com/share/28d10123-e5fc-402a-bef9-e8ddc801cff1 above
-	// all why we need to
-	//  initialize the weapon in the constructor of HumanA as reference and not as
-	//  pointer and in the initialization list
 	// first block scope
 	{
 		Weapon club = Weapon("crude spiked club");
@@ -45,8 +40,3 @@ int main()
 
 	return (0);
 }
-// Note 1
-// Temporary objects in C++ are destroyed at the end of the full expression in which they are created. This means that
-// the temporary Weapon object would be destroyed at the end of the statement, not at the end of the block scope.
-// Therefore, by the time the execution reaches the next line, the Weapon object to which clubPTR points would already
-// have been destroyed, leaving clubPTR dangling and leading to undefined behavior if dereferenced.
