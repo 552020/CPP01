@@ -15,8 +15,5 @@
 !.gitignore
 !.clang-format
 # Do not ignore directories
-ex*/obj/
-!ex*/
 !.vscode/
-# Specifically ignore the internal directory
 secretus/
