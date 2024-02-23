@@ -1,23 +1,29 @@
 # Ignore everything
 *
-# But not these files...
-!*.c
-!*.cpp
-!*.h
-!*.hpp
-!*.md
-!*.txt
-!*.sh
-!*.py
-!*.json
-!Makefile
+
+# Except for these directories (and their contents)
 !.gitignore
+!/**/
+
+# Except for these file types in any directory
+!**/*.c
+!**/*.cpp
+!**/*.h
+!**/*.hpp
+!**/*.md
+!**/*.txt
+!**/*.sh
+!**/*.py
+!**/*.json
+
+# Specific files and directories to include
+!Makefile
 !.clang-format
 !.vscode/
 !docs/
 !tests/
-!tests/*/
-!tests/test_files/*
-secretus/
-a.out
-*.o
+
+# Exclude specific files or directories
+/secretus/
+/a.out
+**/*.o
