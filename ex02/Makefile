@@ -3,7 +3,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Target executable name
-TARGET = main 
+TARGET = HI_THIS_IS_BRAIN
 
 # Source and Object Files
 SRCS = main.cpp  
@@ -27,6 +27,7 @@ $(OBJDIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
+	rm -rf $(OBJDIR)
 	rm -f $(OBJS) $(TARGET)
 
 fclean: clean

@@ -3,43 +3,47 @@
 #include <sstream> // ostringstream
 #include <string>  // getline, string
 
-std::string readFileIntoString(const std::string &path) {
-  // Note 1
-  std::ifstream input_file(path.c_str());
-  // Note 2
-  if (!input_file.is_open()) {
-    std::cerr << "Could not open the file - '" << path << "'" << std::endl;
-    exit(EXIT_FAILURE);
-  }
+std::string readFileIntoString(const std::string &path)
+{
+	// Note 1
+	std::ifstream input_file(path.c_str());
+	// Note 2
+	if (!input_file.is_open())
+	{
+		std::cerr << "Could not open the file - '" << path << "'" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 
-  std::ostringstream buffer;
-  buffer << input_file.rdbuf();
-  input_file.close();
-  return (buffer.str());
+	std::ostringstream buffer;
+	buffer << input_file.rdbuf();
+	input_file.close();
+	return (buffer.str());
 }
 
-void writeStringIntoFile(const std::string &path, const std::string &content) {
-  std::ofstream output_file(path.c_str());
-  if (!output_file.is_open()) {
-    std::cerr << "Could not open the file - '" << path << "'" << std::endl;
-    exit(EXIT_FAILURE);
-  }
-  output_file << content;
-  output_file.close();
+void writeStringIntoFile(const std::string &path, const std::string &content)
+{
+	std::ofstream output_file(path.c_str());
+	if (!output_file.is_open())
+	{
+		std::cerr << "Could not open the file - '" << path << "'" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	output_file << content;
+	output_file.close();
 }
 
-std::string replaceOccurences(std::string file_content,
-                              const std::string toReplace,
-                              const std::string replacer) {
-  size_t pos = 0;
-  while ((pos = file_content.find(toReplace, pos)) != std::string::npos) {
-    std::string strBefore = file_content.substr(0, pos);
-    std::string strAfter = file_content.substr(pos + toReplace.length());
-    file_content = strBefore + replacer + strAfter;
-    // The serarch should continue after the replaced string
-    pos += replacer.length();
-  }
-  return (file_content);
+std::string replaceOccurences(std::string file_content, const std::string toReplace, const std::string replacer)
+{
+	size_t pos = 0;
+	while ((pos = file_content.find(toReplace, pos)) != std::string::npos)
+	{
+		std::string strBefore = file_content.substr(0, pos);
+		std::string strAfter = file_content.substr(pos + toReplace.length());
+		file_content = strBefore + replacer + strAfter;
+		// The serarch should continue after the replaced string
+		pos += replacer.length();
+	}
+	return (file_content);
 }
 
 // TODO: think about edge cases
@@ -47,29 +51,28 @@ std::string replaceOccurences(std::string file_content,
 // - s1 and s2 can be empty strings
 // - s1 and s2 can be the same string
 
+int main(int argc, char **argv)
+{
 
-int main(int argc, char **argv) {
+	std::ifstream infile;
+	std::string s1;
+	std::string s2;
+	std::string content;
+	std::string new_content;
 
-  std::ifstream infile;
-  std::string s1;
-  std::string s2;
-  std::string content;
-  std::string new_content;
-
-  if (argc != 4) {
-    std::cout << "argc = " << argc << std::endl;
-    std::cerr << "Usage: " << argv[0]
-              << " <file_path> <string_to_replace> <replacement_string>"
-              << std::endl;
-    return 1;
-  }
-  std::string file_path = argv[1];
-  s1 = argv[2];
-  s2 = argv[3];
-  content = readFileIntoString(file_path);
-  new_content = replaceOccurences(content, s1, s2);
-  std::cout << new_content << std::endl;
-  writeStringIntoFile(file_path + ".replace", new_content);
+	if (argc != 4)
+	{
+		std::cout << "argc = " << argc << std::endl;
+		std::cerr << "Usage: " << argv[0] << " <file_path> <string_to_replace> <replacement_string>" << std::endl;
+		return 1;
+	}
+	std::string file_path = argv[1];
+	s1 = argv[2];
+	s2 = argv[3];
+	content = readFileIntoString(file_path);
+	new_content = replaceOccurences(content, s1, s2);
+	std::cout << new_content << std::endl;
+	writeStringIntoFile(file_path + ".replace", new_content);
 }
 
 // Note 1

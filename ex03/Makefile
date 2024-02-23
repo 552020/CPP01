@@ -3,10 +3,10 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Target executable name
-TARGET = main 
+TARGET = unnecessary_violence
 
 # Source and Object Files
-SRCS = main.cpp  HumanA.cpp HumanB.cpp Weapon.cpp
+SRCS = main.cpp  HumanA.cpp HumanB.cpp Weapon.cpp HumanC.cpp
 
 # Create an obj directory if it doesn't exist
 OBJDIR = obj
@@ -30,6 +30,7 @@ clean:
 	rm -f $(OBJS) $(TARGET)
 
 fclean: clean
+	rm -rf $(OBJDIR)
 	rm -f $(TARGET)
 
 re: fclean all

@@ -1,17 +1,19 @@
 #include "Zombie.hpp"
 
+#define N 7
 int main()
 {
 
-	Zombie *horde = zombieHorde(5, "Bub");
-	// Announce each zombie
-	for (int i = 0; i < 5; ++i)
+	Zombie *horde = zombieHorde(N, "Bub");
+
+	for (int i = 0; i < N; ++i)
 	{
 		std::cout << "Zombie " << i + 1 << " says: ";
 		horde[i].announce();
 	}
-	// Delete the array
 	delete[] horde;
+
+	Zombie *anotherHorde = zombieHorde(N, "Bob");
 
 	return 0;
 }

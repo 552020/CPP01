@@ -2,25 +2,29 @@
 #include "Weapon.hpp"
 #include <iostream>
 
-HumanB::HumanB(std::string name) {
-  this->name = name;
-  this->weapon = NULL;
+HumanB::HumanB(std::string name)
+{
+	this->_name = name;
+	this->_weapon = NULL;
 }
-// this & is the reference of the weapon
-HumanB::HumanB(std::string name, Weapon &weapon) {
-  this->name = name;
-  // this & is the address of the weapon
-  this->weapon = &weapon;
+HumanB::HumanB(std::string name, Weapon &weapon)
+{
+	this->_name = name;
+	this->_weapon = &weapon;
 }
 HumanB::~HumanB() {}
 
-void HumanB::attack() {
-  if (weapon) {
-    std::cout << this->name << " attacks with his " << this->weapon->getType()
-              << std::endl;
-  } else {
-    std::cout << this->name << " attacks with no weapon!" << std::endl; //
-  }
+void HumanB::attack()
+{
+	if (_weapon)
+	{
+		std::cout << this->_name << " attacks with his " << this->_weapon->getType() << std::endl;
+	}
+	else
+	{
+		std::cout << this->_name << " attacks with no weapon!" << std::endl; //
+	}
 }
-
-void HumanB::setWeapon(Weapon &weapon) { this->weapon = &weapon; }
+// Only HumandB has a setWeapon method that takes a Weapon reference
+// This is not defined explicetly in the subject, but we see it in the example
+void HumanB::setWeapon(Weapon &weapon) { this->_weapon = &weapon; }

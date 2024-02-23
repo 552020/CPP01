@@ -164,35 +164,29 @@ HumanA and HumanB are almost the same except for these two tiny details:
 • HumanB may not always have a Weapon, whereas HumanA will always be armed.
 If your implementation is correct, executing the following code will print an attack with "crude spiked club" then a second attack with "some other type of club" for both test cases:
 
-```c
+```c++
 int main()
 {
-{
-Weapon
+	{
+		Weapon club = Weapon("crude spiked club");
 
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
 }
-{
-
-}
-}
-
-club = Weapon("crude spiked club");
-
-HumanA bob("Bob", club);
-bob.attack();
-club.setType("some other type of club");
-bob.attack();
-Weapon
-
-club = Weapon("crude spiked club");
-
-HumanB jim("Jim");
-jim.setWeapon(club);
-jim.attack();
-club.setType("some other type of club");
-jim.attack();
-
 return 0;
+}
+
 ```
 
 Don’t forget to check for memory leaks. In which case do you think it would be best to use a pointer to

@@ -4,14 +4,16 @@
 #include "Weapon.hpp"
 #include <string>
 
-class HumanA {
-public:
-  HumanA(std::string name, Weapon &weapon);
-  ~HumanA();
+class HumanA
+{
+  public:
+	HumanA(std::string name, Weapon &weapon);
+	~HumanA();
+	void attack();
 
-  std::string name;
-  Weapon &weapon;
-  void attack();
+  private:
+	std::string _name;
+	Weapon &_weapon;
 };
 
 #endif

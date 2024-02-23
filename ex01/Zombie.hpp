@@ -4,24 +4,22 @@
 #include <iostream>
 #include <string>
 
-class Zombie {
-private:
-  std::string name;
+class Zombie
+{
+  private:
+	std::string name;
 
-public:
-  // Default constructor
-  Zombie() : name("Scary Name") {}
-  // Constructor
-  Zombie(std::string name);
+  public:
+	Zombie();
+	Zombie(std::string name);
 
-  // Destructor
-  ~Zombie();
+	~Zombie();
 
-  // Member function to announce
-  void announce() const;
+	void announce() const;
+	void setName(std::string name);
 };
 
-Zombie *newZombie(std::string name);
 Zombie *zombieHorde(int N, std::string name);
+Zombie *anotherZombieHorde(int N, std::string name);
 
-#endif // ZOMBIE_HPP
+#endif
