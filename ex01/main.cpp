@@ -5,7 +5,6 @@ int main()
 {
 
 	Zombie *horde = zombieHorde(N, "Bub");
-
 	for (int i = 0; i < N; ++i)
 	{
 		std::cout << "Zombie " << i + 1 << " says: ";
@@ -14,6 +13,11 @@ int main()
 	delete[] horde;
 
 	Zombie *anotherHorde = zombieHorde(N, "Bob");
-
+	for (int i = 0; i < N; ++i)
+	{
+		std::cout << "Zombie " << i + 1 << " says: ";
+		anotherHorde[i].announce();
+	}
+	delete[] anotherHorde;
 	return 0;
 }
