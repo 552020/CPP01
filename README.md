@@ -6,6 +6,8 @@
 
 ## 02 - HI THIS IS BRAIN
 
+````
+
 ## 03 - Unnecessary violence
 
 ### Weapon as reference in the initialisation list
@@ -23,7 +25,7 @@ HumanA::HumanA(std::string name, Weapon &weapon) : _weapon(weapon) { this->_name
 HumanA::~HumanA() {}
 
 void HumanA::attack() { std::cout << this->_name << " attacks with his " << _weapon.getType() << std::endl; }
-```
+````
 
 **Why we need an initialisation list here**
 A reference is not a standalone object like a pointer or a regular variable. It's just an alias for another object. So when you create a reference, you must immediately make it refer to something. This is unlike a regular variable or a pointer, where you can declare it and assign it a value later.
