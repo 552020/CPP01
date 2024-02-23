@@ -6,6 +6,7 @@ class Harl
 	Harl();
 	~Harl();
 	void complain(std::string level);
+	void complain_extra(std::string level);
 	void complain_if_else(std::string level);
 
   private:

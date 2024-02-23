@@ -1,6 +1,12 @@
 # Pointers to member
 
-Pointers-to-members provide a way to dynamically select a member of a class at runtime. This can be useful for more flexible object manipulation.
+Pointers-to-members provide a way to dynamically select a member of a class at runtime. They don't refer to a specific istance of a class.
+
+## Syntax
+
+Pointers-to-members are defined with the typical `*` for pointers but after the `::` and the name of the class. The type of the pointer should also specified.
+
+`int myClass::*pointerToMember`
 
 ## Pointers to function members
 

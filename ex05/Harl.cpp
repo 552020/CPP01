@@ -30,8 +30,6 @@ void Harl::error(void) { std::cout << "This is unacceptable, I want to speak to 
 void Harl::complain(std::string level)
 {
 	int nbrOfComplainFunctions = 4;
-	// this could be declared also elsewehre
-	// and acutally the typedef is not strictly necessary
 	typedef void (Harl::*ptrToMemberFunction)(void);
 	ptrToMemberFunction complainFunctions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string complainLevels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
@@ -44,6 +42,7 @@ void Harl::complain(std::string level)
 		}
 	}
 }
+
 void Harl::complain_if_else(std::string level)
 {
 	if (level == "DEBUG")
@@ -61,5 +60,35 @@ void Harl::complain_if_else(std::string level)
 	else if (level == "ERROR")
 	{
 		error();
+	}
+}
+
+void Harl::complain_extra(std::string level)
+{
+	int nbrOfComplainFunctions = 4;
+	typedef void (Harl::*ptrToMemberFunction)(void);
+	// typdef not strictly necessary, but it makes the code more readable
+	// void (Harl::*complainFunctions[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	ptrToMemberFunction complainFunctions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string complainLevels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	for (int i = 0; i < nbrOfComplainFunctions; i++)
+	{
+		if (level == complainLevels[i])
+		{
+			(this->*complainFunctions[i])();
+			break;
+		}
+	}
+	/* Other ways to assigne the pointer and call the function*/
+	for (int i = 0; i < nbrOfComplainFunctions; i++)
+	{
+		if (level == complainLevels[i])
+		{
+			ptrToMemberFunction complainFunctionPtr = complainFunctions[i];
+			void (Harl::*complainFunctionAnotherPtr)(void) = complainFunctions[i];
+			(this->*complainFunctionPtr)();
+			(this->*complainFunctionAnotherPtr)();
+			break;
+		}
 	}
 }
