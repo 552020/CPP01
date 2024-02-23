@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cstdlib>
 
 std::string readFileIntoString(const std::string &path)
 {
@@ -9,7 +10,7 @@ std::string readFileIntoString(const std::string &path)
 	if (!input_file.is_open())
 	{
 		std::cerr << "Could not open the file - '" << path << "'" << std::endl;
-		exit(EXIT_FAILURE);
+		std::exit(1);
 	}
 	std::ostringstream buffer;
 	buffer << input_file.rdbuf();
@@ -24,7 +25,7 @@ void writeStringIntoFile(const std::string &path, const std::string &content)
 	if (!output_file.is_open())
 	{
 		std::cerr << "Could not open the file - '" << path << "'" << std::endl;
-		exit(EXIT_FAILURE);
+		std::exit(1);
 	}
 	output_file << content;
 	output_file.close();
@@ -50,12 +51,12 @@ void checks(std::string &s1, std::string &s2)
 	if (s1.empty() || s2.empty())
 	{
 		std::cerr << "Error! The strings can't be empty" << std::endl;
-		exit(EXIT_FAILURE);
+		std::exit(1);
 	}
 	if (s1 == s2)
 	{
 		std::cerr << "Error! The strings are the same. Nothing to do!" << std::endl;
-		exit(EXIT_FAILURE);
+		std::exit(1);
 	}
 }
 
