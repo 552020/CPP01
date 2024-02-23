@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 	}
 	std::string level = argv[1];
 
-	// EnumLevel is a new type
 	enum EnumLevel
 	{
 		DEBUG,
@@ -20,7 +19,6 @@ int main(int argc, char **argv)
 		ERROR,
 		ELSE
 	};
-	// We declare a variable of type EnumLevel
 	EnumLevel chosenLevel = DEBUG;
 
 	if (level == "DEBUG")
