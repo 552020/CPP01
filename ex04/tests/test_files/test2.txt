@@ -1,0 +1,1 @@
+C++ is great. C++ is powerful. Let's replace C++ with Python.

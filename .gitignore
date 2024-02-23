@@ -15,8 +15,9 @@
 !.clang-format
 !.vscode/
 !docs/
-!ex04/tests/
-!ex04/tests/test_files/*
+!tests/
+!tests/*/
+!tests/test_files/*
 secretus/
 a.out
 *.o
