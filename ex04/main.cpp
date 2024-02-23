@@ -1,7 +1,7 @@
-#include <fstream>
-#include <iostream>
-#include <sstream> // ostringstream
-#include <string>  // getline, string
+#include <fstream>	// ifstream, ofstream
+#include <iostream> // cerr, cout
+#include <sstream>	// ostringstream
+#include <string>	// getline, string
 
 std::string readFileIntoString(const std::string &path)
 {
@@ -13,9 +13,13 @@ std::string readFileIntoString(const std::string &path)
 		std::cerr << "Could not open the file - '" << path << "'" << std::endl;
 		exit(EXIT_FAILURE);
 	}
-
+	// Note 3
 	std::ostringstream buffer;
 	buffer << input_file.rdbuf();
+	// The same like (but this is more efficient)
+	// std::ostringstream buffer(input_file.rdbuf());
+	// Or the same like
+	// std::ostringstream buffer << input_file.rdbuf();
 	input_file.close();
 	return (buffer.str());
 }
@@ -32,18 +36,21 @@ void writeStringIntoFile(const std::string &path, const std::string &content)
 	output_file.close();
 }
 
-std::string replaceOccurences(std::string file_content, const std::string toReplace, const std::string replacer)
+// In C we would use the function strstr to find the first occurrence of a substring in a string.
+std::string replaceOccurences(std::string fileContent, const std::string toReplace, const std::string replacer)
 {
 	size_t pos = 0;
-	while ((pos = file_content.find(toReplace, pos)) != std::string::npos)
+	size_t toReplaceLength = toReplace.length();
+	size_t replacerLength = replacer.length();
+	while ((pos = fileContent.find(toReplace, pos)) != std::string::npos)
 	{
-		std::string strBefore = file_content.substr(0, pos);
-		std::string strAfter = file_content.substr(pos + toReplace.length());
-		file_content = strBefore + replacer + strAfter;
+		std::string strBefore = fileContent.substr(0, pos);
+		std::string strAfter = fileContent.substr(pos + toReplaceLength);
+		fileContent = strBefore + replacer + strAfter;
 		// The serarch should continue after the replaced string
-		pos += replacer.length();
+		pos += replacerLength;
 	}
-	return (file_content);
+	return (fileContent);
 }
 
 // TODO: think about edge cases
@@ -51,25 +58,37 @@ std::string replaceOccurences(std::string file_content, const std::string toRepl
 // - s1 and s2 can be empty strings
 // - s1 and s2 can be the same string
 
+void checks(std::string &s1, std::string &s2)
+{
+	if (s1.empty() || s2.empty())
+	{
+		std::cerr << "Error! The strings can't be empty" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	if (s1 == s2)
+	{
+		std::cerr << "Error! The strings are the same. Nothing to do!" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+}
+
 int main(int argc, char **argv)
 {
 
 	std::ifstream infile;
-	std::string s1;
-	std::string s2;
-	std::string content;
 	std::string new_content;
 
 	if (argc != 4)
 	{
-		std::cout << "argc = " << argc << std::endl;
+		std::cerr << "Error! " << argc << std::endl;
 		std::cerr << "Usage: " << argv[0] << " <file_path> <string_to_replace> <replacement_string>" << std::endl;
 		return 1;
 	}
 	std::string file_path = argv[1];
-	s1 = argv[2];
-	s2 = argv[3];
-	content = readFileIntoString(file_path);
+	std::string s1 = argv[2];
+	std::string s2 = argv[3];
+	checks(s1, s2);
+	std::string content = readFileIntoString(file_path);
 	new_content = replaceOccurences(content, s1, s2);
 	std::cout << new_content << std::endl;
 	writeStringIntoFile(file_path + ".replace", new_content);
@@ -96,3 +115,22 @@ constructor.
 // Note 2
 // Check if the file has been successfully opened
 // is_open() returns true if the file is open, false otherwise
+
+/* Note 3
+
+std::ostringstream buffer;
+buffer << input_file.rdbuf();
+
+The same like (but this is more efficient)
+std::ostringstream buffer(input_file.rdbuf());
+
+Or the same like
+std::ostringstream buffer << input_file.rdbuf();
+
+std::string buffer;
+std::string line;
+while (std::getline(input_file, line)) {
+	buffer += line + '\n'; // Repeatedly append to the string
+}
+
+*/
