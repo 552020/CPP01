@@ -65,11 +65,11 @@ void Harl::complain_if_else(std::string level)
 
 void Harl::complain_extra(std::string level)
 {
-	int nbrOfComplainFunctions = 4;
 	typedef void (Harl::*ptrToMemberFunction)(void);
 	// typdef not strictly necessary, but it makes the code more readable
 	// void (Harl::*complainFunctions[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	ptrToMemberFunction complainFunctions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	int nbrOfComplainFunctions = sizeof(complainFunctions) / sizeof(complainFunctions[0]);
 	std::string complainLevels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	for (int i = 0; i < nbrOfComplainFunctions; i++)
 	{
