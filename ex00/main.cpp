@@ -17,7 +17,7 @@ int main()
 	std::cout << zedName << " outlived Dave." << std::endl;
 	std::cout << "It can now announce itself again.\n" << std::endl;
 	zedPtr->announce();
-	std::cout << zedName << " has announced itself again." << std::endl;
+	std::cout << "\n" << zedName << " has announced itself again." << std::endl;
 	std::cout << "But notw sadly is going to die." << std::endl;
 	// Deleting the dynamically allocated Zombie, will call the destructor
 	delete zedPtr;
