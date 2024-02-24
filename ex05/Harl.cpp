@@ -79,7 +79,7 @@ void Harl::complain_extra(std::string level)
 			break;
 		}
 	}
-	/* Other ways to assigne the pointer and call the function*/
+	/* Other ways to assign the pointer and call the function*/
 	for (int i = 0; i < nbrOfComplainFunctions; i++)
 	{
 		if (level == complainLevels[i])
