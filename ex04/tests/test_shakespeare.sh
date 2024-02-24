@@ -19,7 +19,7 @@ echo "\"the\" occurs $count_the_before times."
 echo "\"bla\" occurs $count_bla_before times."
 
 # Call the replacement program
-./sed_is_for_losers "$original_file" the bla
+../sed_is_for_losers "$original_file" the bla
 
 # Make sure the replacement was successful and the file exists
 if [ ! -f "$modified_file" ]; then
