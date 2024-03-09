@@ -3,7 +3,6 @@
 
 # Except for these directories (and their contents)
 !.gitignore
-!/**/
 
 # Except for these file types in any directory
 !**/*.c
@@ -14,7 +13,7 @@
 !**/*.txt
 !**/*.sh
 !**/*.py
-!**/*.json
+!**/*.pdf
 
 # Specific files and directories to include
 !Makefile
