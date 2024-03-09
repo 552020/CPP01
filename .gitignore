@@ -19,7 +19,6 @@
 # Specific files and directories to include
 !Makefile
 !.clang-format
-!.vscode/
 !docs/
 !tests/
 
@@ -27,3 +26,4 @@
 /secretus/
 /a.out
 **/*.o
+.vscode/
